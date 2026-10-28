@@ -1,0 +1,220 @@
+apify:
+  actor_id: eY5rI8N4dDhAVyxlq
+  country_include:
+  - United Arab Emirates
+  - United Kingdom
+  - United States
+  - Canada
+  - Singapore
+  - Ireland
+  actor_input:
+    companyIndustryIncludes:
+    - Marketing & Advertising
+    companyKeywordIncludes:
+    - PPC
+    - Paid ads
+    - Paid media
+    - Paid advertising
+    - Ads
+    - Google Ads
+    - Meta Ads
+    - Facebook Ads
+    - Linkedin Ads
+    companyKeywordMode: phrase
+    companySizeIncludes:
+    - 1-10
+    - 11-50
+    countOnly: false
+    dontSaveProgress: false
+    hasPhone: false
+    includeTitleVariants: false
+    personTitleIncludes:
+    - CEO
+    - Owner
+    - Founder
+    - Co-Owner
+    - Co-Founder
+    - Director
+    resetProgress: false
+    seniorityIncludes:
+    - c_suite
+    - director
+    - owner
+    - partner
+    totalResults: 50
+  quality:
+    enabled: true
+    site_timeout_seconds: 8
+    max_workers: 12
+    ppc_terms:
+    - PPC
+    - Pay per click
+    - Google Ads
+    - Paid search
+    - Paid media
+    - Paid advertising
+    - Bing Ads
+    - Facebook Ads
+    - Meta Ads
+    - Media buying
+    - Performance marketing
+countries:
+  united arab emirates:
+    tz: Asia/Dubai
+    currency: "$"
+  united kingdom:
+    tz: Europe/London
+    currency: "£"
+  united states:
+    tz: America/New_York
+    currency: "$"
+  canada:
+    tz: America/Toronto
+    currency: "$"
+  singapore:
+    tz: Asia/Singapore
+    currency: "$"
+  ireland:
+    tz: Europe/Dublin
+    currency: "$"
+llm:
+  enabled: false
+  base_url: https://openrouter.ai/api/v1
+  model: deepseek/deepseek-v4-flash
+  icebreaker_model: anthropic/claude-sonnet-5
+  temperature: 0.3
+  max_tokens: 350
+outbound:
+  sender_name: Hichem
+  daily_send_cap: 12
+  send_spacing_seconds: 2400
+  send_jitter_min: 900
+  send_jitter_max: 1800
+  max_sends_per_run: 3
+  run_spacing_seconds: 45
+  window_start: 09:00
+  window_end: '18:00'
+  timezone: Europe/London
+  followup_days:
+  - 3
+  fallback_icebreaker: Been checking out your company on LinkedIn, your growth so far piqued my curiosity. Had to send you this!
+reply:
+  positive_keywords:
+  - ok
+  - okay
+  - o k
+  - 'yes'
+  - yep
+  - interested
+  - let's talk
+  - let us talk
+  - pricing
+  - price
+  - quote
+  - send it
+  - send me
+  - sounds good
+  - book a call
+  - book call
+  - demo
+  - call me
+  - keen
+  - happy to
+  - go ahead
+  - more info
+  - definitely
+  - want to see
+  negative_keywords:
+  - 'no'
+  - not interested
+  - no thanks
+  - unsubscribe
+  - stop
+  - remove me
+  - don't contact
+  - do not contact
+  - not now
+  - don't email
+  - no more emails
+  - spam
+  - never
+  - waste of time
+  - not a good fit
+  - busy
+links:
+  loom: https://www.loom.com/share/b605ffcfa9134809872c21828dc87f45
+  drive: https://drive.google.com/drive/folders/1wYhX-6nhL9e8-unGTJp9fsepZ6lMuTwJ?usp=sharing
+email_verification:
+  use_sheet_verification: true
+  method: apify
+  verifier_actor_id: account56/email-verifier
+  batch_cap: 100
+  smtp_probe_enabled: false
+  mark_status: invalid
+  mx_timeout_seconds: 3
+  smtp_timeout_seconds: 8
+  bounce_scan_hours: 48
+  resend_verify_after_days: 7
+  verifier_version: 2
+  require_site: true
+  site_timeout_seconds: 5
+sheets:
+  spreadsheet_title: Outreach CRM
+  spreadsheet_id: 1a1hTk__nkeqckNwTKsIzuGL1z29cFFqkR8LFnimBKoU
+  sheet_name: recruitment
+  send_verification:
+  - good
+  column_map:
+    agency_name: organization_name
+    contact_title: title
+    email: email
+    website: organization_website_url
+    country: country
+    verification: verification
+  tracking_columns:
+  - status
+  - thread_id
+  - icebreaker
+  - first_sent_at
+  - followup_1_at
+  - reply_at
+  - reply_class
+  - notes
+  - run_id
+  - verified_at
+  - icebreaker_client
+  - verified_version
+  health_note_range: AK1:AL1
+website_scout:
+  timeout_seconds: 10
+  max_text_chars: 4000
+monitoring:
+  recipient: ""
+  poll_stale_after_minutes: 20
+test:
+  to_email: you@example.com
+  sample_rows:
+    - agency_name: PMA Recruitment Services
+      contact_name: Craig Kenny
+      website: https://www.pmarecruitmentservices.com
+      status: new
+    - agency_name: Aura Recruit
+      contact_name: Matt Crick
+      website: https://www.aurarecruit.com
+      status: new
+    - agency_name: Bogus Recruitment
+      contact_name: Alex
+      website: http://nonexistent.example.invalid
+      status: new
+    - agency_name: Talent People Ltd
+      contact_name: Priya
+      website: https://www.etcetera.example.invalid
+      status: new
+    - agency_name: Swift Hire Co
+      contact_name: Oliver
+      website: https://www.swift-hire.example.invalid
+      status: outreach_sent
+    - agency_name: StaffLink UK
+      contact_name: Emily
+      website: https://www.stafflink.example.invalid
+      status: outreach_sent
